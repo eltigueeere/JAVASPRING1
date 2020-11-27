@@ -6,7 +6,7 @@ public class ProblemaCERO {
 	int n = 0;
 	
 	public String miNombre(){
-	    if (n==10000) {
+	    if (n==10) {
 		    System.out.println("En lugar de ciclos use recurcividad:");
 	    	return null;
 	    }

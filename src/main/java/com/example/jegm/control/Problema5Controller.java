@@ -4,8 +4,10 @@ import java.util.Map;
 
 import org.apache.catalina.valves.rewrite.Substitution.RewriteRuleBackReferenceElement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.jegm.models.dao.IProductosDeTiendaDao;
 import com.example.jegm.models.entity.ProductosDeTienda;
 
+import com.google.gson.*;
 @Controller
 public class Problema5Controller {
 
@@ -45,10 +48,14 @@ public class Problema5Controller {
 	
 	@Autowired
 	private IProductosDeTiendaDao productosDao;
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/listar")
 	public String listar(Model model) {
 		model.addAttribute("productos", productosDao.findAll());
-		System.out.println(model.addAttribute("productos", productosDao.findAll()));
+		System.out.println(productosDao.findAll());
+		Gson gson = new Gson();
+		
+		model.addAttribute("lalos", gson.toJson(productosDao.findAll()));
 		return "listar";
 	}
 	

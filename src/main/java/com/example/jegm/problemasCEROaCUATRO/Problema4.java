@@ -3,7 +3,7 @@ package com.example.jegm.problemasCEROaCUATRO;
 public class Problema4 {
 
 	public void inicio() {
-		  int serie = 50;
+		  int serie = 10;
 		  
 	      for (int i = 0; i < serie; i++) {
 
